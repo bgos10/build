@@ -509,6 +509,14 @@ def ReplaceOtaKeys(input_tf_zip, output_tf_zip, misc_info):
   if p.returncode == 0:
     common.ZipWriteStr(output_tf_zip, "META/releasekey.txt", data)
 
+  # Save the base64 key representation in the update for key-change
+  # validations
+  p = common.Run(["python", "build/tools/getb64key.py", mapped_keys[0]],
+                 stdout=subprocess.PIPE)
+  data, _ = p.communicate()
+  if p.returncode == 0:
+    common.ZipWriteStr(output_tf_zip, "META/releasekey.txt", data)
+
   # SystemUpdateActivity uses the x509.pem version of the keys, but
   # put into a zipfile system/etc/security/otacerts.zip.
   # We DO NOT include the extra_recovery_keys (if any) here.
