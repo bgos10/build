@@ -90,6 +90,9 @@ dont_bother_goals := clean clobber dataclean installclean \
 ifneq ($(filter $(dont_bother_goals), $(MAKECMDGOALS)),)
 dont_bother := true
 endif
+ifeq ($(MAKECMDGOALS),magic)
+dont_bother := true
+endif
 
 ORIGINAL_MAKECMDGOALS := $(MAKECMDGOALS)
 
@@ -1130,6 +1133,11 @@ clean:
 clobber: clean
 
 # The rules for dataclean and installclean are defined in cleanbuild.mk.
+
+.PHONY: magic
+magic:
+	@rm -rf $(OUT_DIR)/target/product/*
+	@echo -e ${CL_GRN}"Target/Product directory removed."${CL_RST}
 
 # Clears out zip and build.prop
 .PHONY: dirty
