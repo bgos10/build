@@ -179,9 +179,9 @@ include $(BUILD_SYSTEM)/node_fns.mk
 include $(BUILD_SYSTEM)/product.mk
 include $(BUILD_SYSTEM)/device.mk
 
-# A SLIM build needs only the SLIM product makefiles.
-ifneq ($(SLIM_BUILD),)
-  all_product_configs := $(shell find device -path "*/$(SLIM_BUILD)/slim.mk")
+# A ORION build needs only the ORION product makefiles.
+ifneq ($(ORION_BUILD),)
+  all_product_configs := $(shell find device -path "*/$(ORION_BUILD)/orion.mk")
 else
   ifneq ($(strip $(TARGET_BUILD_APPS)),)
   # An unbundled app build needs only the core product makefiles.
@@ -192,7 +192,7 @@ else
     # files in the tree.
     all_product_configs := $(get-all-product-makefiles)
   endif # TARGET_BUILD_APPS
-endif # SLIM_BUILD
+endif # ORION_BUILD
 
 ifeq ($(SLIM_BUILD),)
 # Find the product config makefile for the current product.
