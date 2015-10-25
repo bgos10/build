@@ -194,7 +194,7 @@ else
   endif # TARGET_BUILD_APPS
 endif # ORION_BUILD
 
-ifeq ($(SLIM_BUILD),)
+ifeq ($(ORION_BUILD),)
 # Find the product config makefile for the current product.
 # all_product_configs consists items like:
 # <product_name>:<path_to_the_product_makefile>
