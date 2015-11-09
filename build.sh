@@ -1,5 +1,6 @@
 #!/bin/bash
 device=$1;
+. build/envsetup.sh
 if [ "$device" == "" ];
 then
 echo "Please specify the device as a parameter";
