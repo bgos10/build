@@ -1836,12 +1836,13 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) $(DISTTOOLS)
 
 ORION_TARGET_PACKAGE := $(PRODUCT_OUT)/$(ORION_MOD_VERSION).zip
 
-.PHONY: otapackage orion
+.PHONY: otapackage orion bacon
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 orion: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(ORION_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(ORION_TARGET_PACKAGE) > $(ORION_TARGET_PACKAGE).md5sum
 	@echo -e ${CL_CYN}"Package Complete: $(ORION_TARGET_PACKAGE)"${CL_RST}
+bacon: orion
 
 # -----------------------------------------------------------------
 # The factory package
