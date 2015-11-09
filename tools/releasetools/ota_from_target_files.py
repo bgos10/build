@@ -626,6 +626,17 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
   system_progress = 0.75
 
+
+  script.Print("");
+  script.Print("  ____       _             ");
+  script.Print(" / __ \     (_)            ");
+  script.Print("| |  | |_ __ _  ___  _ __  ");
+  script.Print("| |  | | '__| |/ _ \| '_ \ ");
+  script.Print("| |__| | |  | | (_) | | | |");
+  script.Print(" \____/|_|  |_|\___/|_| |_|");
+  script.Print("                           ");
+  script.Print("");
+
   if OPTIONS.wipe_user_data:
     system_progress -= 0.1
   if HasVendorPartition(input_zip):
