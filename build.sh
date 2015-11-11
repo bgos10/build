@@ -18,3 +18,4 @@ unset ORION_RELEASE
 fi
 lunch orion_$device-userdebug
 mka orion
+rm -f $OUT/orion_$device-ota*.zip
