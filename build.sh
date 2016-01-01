@@ -17,5 +17,5 @@ else
 unset ORION_RELEASE
 fi
 lunch orion_$device-userdebug
-mka orion 2>&1 | tee $(date +%Y%m%d)-$device.log
+make -j$(cat /proc/cpuinfo | grep -c "processor") orion 2>&1 | tee $(date +%Y%m%d)-$device.log
 rm -f $OUT/orion_$device-ota*.zip
