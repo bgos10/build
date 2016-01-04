@@ -622,13 +622,13 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
 
   script.Print("");
-  script.Print("  ____       _             ");
-  script.Print(" / __ \     (_)            ");
-  script.Print("| |  | |_ __ _  ___  _ __  ");
-  script.Print("| |  | | '__| |/ _ \| '_ \ ");
-  script.Print("| |__| | |  | | (_) | | | |");
-  script.Print(" \____/|_|  |_|\___/|_| |_|");
-  script.Print("                           ");
+  script.Print("  ____       _               ____  ______");
+  script.Print(" / __ \     (_)             / __ \|  ____|");
+  script.Print("| |  | |_ __ _  ___  _ __  | |  | | |____");
+  script.Print("| |  | | '__| |/ _ \| '_ \ | |  | |____  |");
+  script.Print("| |__| | |  | | (_) | | | || |__| |____| |");
+  script.Print(" \____/|_|  |_|\___/|_| |_| \____/|______|");
+  script.Print("");
   script.Print("");
 
   if OPTIONS.wipe_user_data:
