@@ -42,11 +42,11 @@ except ImportError:
 DEBUG = False
 default_manifest = ".repo/manifest.xml"
 
-custom_local_manifest = ".repo/local_manifests/aospb_manifest.xml"
-custom_default_revision = "mm6.0"
-custom_dependencies = "aospb.dependencies"
-org_manifest = "AOSPB"  # leave empty if org is provided in manifest
-org_display = "AOSPB"  # needed for displaying
+custom_local_manifest = ".repo/local_manifests/orion_manifest.xml"
+custom_default_revision = "6.0.1"
+custom_dependencies = "orion.dependencies"
+org_manifest = "orion"  # leave empty if org is provided in manifest
+org_display = "orion"  # needed for displaying
 
 github_auth = None
 
