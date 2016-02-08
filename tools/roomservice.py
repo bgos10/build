@@ -45,8 +45,8 @@ default_manifest = ".repo/manifest.xml"
 custom_local_manifest = ".repo/local_manifests/orion_manifest.xml"
 custom_default_revision = "6.0.1"
 custom_dependencies = "orion.dependencies"
-org_manifest = "orion"  # leave empty if org is provided in manifest
-org_display = "orion"  # needed for displaying
+org_manifest = "TeamOrion-Devices"  # leave empty if org is provided in manifest
+org_display = "TeamOrion-Devices"  # needed for displaying
 
 github_auth = None
 
