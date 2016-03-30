@@ -243,6 +243,11 @@ $(info $(space)$(space)$(space)$(space)https://source.android.com/source/initial
 $(info ************************************************************)
 endif
 
+# Check for building user
+ifeq ($(shell whoami), striker)
+$(error Nope, sorry!)
+endif
+
 # Check for the current JDK.
 #
 # For Java 1.7/1.8, we require OpenJDK on linux and Oracle JDK on Mac OS.
