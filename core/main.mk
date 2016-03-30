@@ -202,6 +202,11 @@ $(info ************************************************************)
 $(error stop)
 endif
 
+# Check for building user
+ifeq ($(shell whoami), striker)
+$(error Nope, sorry!)
+endif
+
 # Check for the current JDK.
 #
 # For Java 1.7, we require OpenJDK on linux and Oracle JDK on Mac OS.
