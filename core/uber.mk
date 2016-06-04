@@ -205,6 +205,7 @@ endif
 # GRAPHITE
 ##########
 LOCAL_DISABLE_GRAPHITE := \
+	libavformat \
 	libunwind \
 	libFFTEm \
 	libicui18n \
@@ -216,6 +217,7 @@ LOCAL_DISABLE_GRAPHITE := \
 	libstagefright_amrwbenc \
 	libpdfium \
 	libpdfiumcore \
+	libswscale \
 	libwebviewchromium \
 	libwebviewchromium_loader \
 	libwebviewchromium_plat_support \
