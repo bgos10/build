@@ -1868,9 +1868,9 @@ else
     script.Print("Unpacking new vendor files...")
     script.UnpackPackageDir("vendor", "/vendor")
 
-  if updating_recovery and not target_has_recovery_patch:
-    script.Print("Unpacking new recovery...")
-    script.UnpackPackageDir("recovery", "/system")
+#  if updating_recovery and not target_has_recovery_patch:
+#    script.Print("Unpacking new recovery...")
+#    script.UnpackPackageDir("recovery", "/system")
 
   system_diff.EmitRenames(script)
   if vendor_diff:
