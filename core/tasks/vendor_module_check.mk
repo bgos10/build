@@ -43,8 +43,9 @@ _vendor_owner_whitelist := \
         synaptics \
         ti \
         trusted_logic \
-        widevine \
-	uber
+		uber \
+        verizon \
+        widevine
 
 
 ifneq (,$(PRODUCTS.$(INTERNAL_PRODUCT).PRODUCT_RESTRICT_VENDOR_FILES))
