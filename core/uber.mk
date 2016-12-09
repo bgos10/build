@@ -13,128 +13,12 @@
 # limitations under the License.
 #
 
-################
-#Strict Aliasing
-################
+###################
+# Strict Aliasing #
+###################
 LOCAL_DISABLE_STRICT := \
-	libc_bionic \
-	libc_dns \
-	libc_tzcode \
-	libziparchive \
-	libtwrpmtp \
-	libfusetwrp \
-	libguitwrp \
-	busybox \
-	libuclibcrpc \
-	libziparchive-host \
-	libpdfiumcore \
-	libandroid_runtime \
-	libmedia \
-	libpdfiumcore \
-	libpdfium \
-	bluetooth.default \
-	logd \
-	mdnsd \
-	net_net_gyp \
-	libstagefright_webm \
-	libaudioflinger \
-	libmediaplayerservice \
-	libstagefright \
-	ping \
-	ping6 \
-	libdiskconfig \
-	libjavacore \
-	libfdlibm \
-	libvariablespeed \
-	librtp_jni \
-	libwilhelm \
-	libdownmix \
-	libldnhncr \
-	libqcomvisualizer \
-	libvisualizer \
-	libutils \
-	libandroidfw \
-	dnsmasq \
-	static_busybox \
-	libwebviewchromium \
-	libwebviewchromium_loader \
-	libwebviewchromium_plat_support \
-	content_content_renderer_gyp \
-	third_party_WebKit_Source_modules_modules_gyp \
-	third_party_WebKit_Source_platform_blink_platform_gyp \
-	third_party_WebKit_Source_core_webcore_remaining_gyp \
-	third_party_angle_src_translator_lib_gyp \
-	third_party_WebKit_Source_core_webcore_generated_gyp \
-	libc_gdtoa \
-	libc_openbsd \
-	libc \
-	libc_nomalloc \
-	patchoat \
-	dex2oat \
-	libart \
-	libart-compiler \
-	oatdump \
-	libart-disassembler \
-	linker \
-	camera.msm8084 \
-	mm-vdec-omx-test \
-	libc_malloc \
-	mdnsd \
-	libstagefright_webm \
-	libc_bionic_ndk \
-	libc_dns \
-	libc_gdtoa \
-	libc_openbsd_ndk \
-	liblog \
-	libc \
-	libbt-brcm_stack \
-	libandroid_runtime \
-	libandroidfw \
-	libosi \
-	libnetlink \
-	clatd \
-	ip \
-	libc_nomalloc \
-	linker \
-	sensors.flounder \
-	libnvvisualizer \
-	libskia \
-	libiprouteutil \
-	libmmcamera_interface \
-	libwifi-service
-
-LOCAL_FORCE_DISABLE_STRICT := \
-	libziparchive-host \
-	libziparchive \
-	libdiskconfig \
-	logd \
-	libjavacore \
-	camera.msm8084 \
-	libstagefright_webm \
-	libc_bionic_ndk \
-	libc_dns \
-	libc_gdtoa \
-	libc_openbsd_ndk \
-	liblog \
-	libc \
-	libbt-brcm_stack \
-	libandroid_runtime \
-	libandroidfw \
-	libosi \
-	libnetlink \
-	clatd \
-	ip \
-	libc_nomalloc \
-	linker \
-	libc_malloc \
-	sensors.flounder \
-	libnvvisualizer \
-	libiprouteutil \
-	libmmcamera_interface \
-	libwifi-service
-
-DISABLE_STRICT := \
-	-fno-strict-aliasing
+	libpdfiumfpdfapi \
+	mdnsd
 
 STRICT_ALIASING_FLAGS := \
 	-fstrict-aliasing \
@@ -146,87 +30,11 @@ STRICT_GCC_LEVEL := \
 STRICT_CLANG_LEVEL := \
 	-Wstrict-aliasing=2
 
-###############
-# Krait Tunings
-###############
-LOCAL_DISABLE_KRAIT := \
-	libc_dns \
-	libc_tzcode \
-	bluetooth.default \
-	libwebviewchromium \
-	libwebviewchromium_loader \
-	libwebviewchromium_plat_support
+############
+# GRAPHITE #
+############
 
-KRAIT_FLAGS := \
-	-mcpu=cortex-a15 \
-	-mtune=cortex-a15
-
-#############
-# GCC Tunings
-#############
-LOCAL_DISABLE_GCCONLY := \
-	bluetooth.default \
-	libwebviewchromium \
-	libwebviewchromium_loader \
-	libwebviewchromium_plat_support
-
-ifeq (arm,$(TARGET_ARCH))
-GCC_ONLY := \
-	-fira-loop-pressure \
-	-fforce-addr \
-	-funsafe-loop-optimizations \
-	-funroll-loops \
-	-ftree-loop-distribution \
-	-fsection-anchors \
-	-ftree-loop-im \
-	-ftree-loop-ivcanon \
-	-ffunction-sections \
-	-fgcse-las \
-	-fgcse-sm \
-	-fweb \
-	-ffp-contract=fast \
-	-mvectorize-with-neon-quad
-else
-GCC_ONLY := \
-	-fira-loop-pressure \
-	-fforce-addr \
-	-funsafe-loop-optimizations \
-	-funroll-loops \
-	-ftree-loop-distribution \
-	-fsection-anchors \
-	-ftree-loop-im \
-	-ftree-loop-ivcanon \
-	-ffunction-sections \
-	-fgcse-las \
-	-fgcse-sm \
-	-fweb \
-	-ffp-contract=fast
-endif
-
-##########
-# GRAPHITE
-##########
-LOCAL_DISABLE_GRAPHITE := \
-	libunwind \
-	libFFTEm \
-	libicui18n \
-	libskia \
-	libvpx \
-	libmedia_jni \
-	libstagefright_mp3dec \
-	libart \
-	libstagefright_amrwbenc \
-	libpdfium \
-	libpdfiumcore \
-	libwebviewchromium \
-	libwebviewchromium_loader \
-	libwebviewchromium_plat_support \
-	libjni_filtershow_filters \
-	fio \
-	libwebrtc_spl \
-	libpcap \
-	libFraunhoferAAC \
-	libhwui
+LOCAL_DISABLE_GRAPHITE :=
 
 GRAPHITE_FLAGS := \
 	-fgraphite \
@@ -237,3 +45,133 @@ GRAPHITE_FLAGS := \
 	-floop-interchange \
 	-floop-strip-mine \
 	-floop-block
+
+#########
+# POLLY #
+#########
+
+# Polly flags for use with Clang
+POLLY := -mllvm -polly \
+	-mllvm -polly-parallel -lgomp \
+	-mllvm -polly-ast-use-context \
+	-mllvm -polly-vectorizer=stripmine \
+	-mllvm -polly-opt-fusion=max \
+	-mllvm -polly-opt-maximize-bands=yes \
+	-mllvm -polly-run-dce \
+	-mllvm -polly-position=after-loopopt \
+	-mllvm -polly-run-inliner \
+	-mllvm -polly-detect-keep-going \
+	-mllvm -polly-opt-simplify-deps=no \
+	-mllvm -polly-rtc-max-arrays-per-group=40
+
+# Those are mostly Bluetooth modules
+DISABLE_POLLY_O3 := \
+	audio.a2dp.default \
+	bdAddrLoader \
+	bdt \
+	bdtest \
+	bluetooth.mapsapi \
+	bluetooth.default \
+	bluetooth.mapsapi \
+	libbluetooth_jni \
+	libbt% \
+	libosi \
+	ositests \
+	net_bdtool \
+	net_hci \
+	net_test_btcore \
+	net_test_device \
+	net_test_osi
+
+# Disable modules that dont work with Polly. Split up by arch.
+DISABLE_POLLY_arm :=  \
+	libavcdec \
+	libavcenc \
+	libcrypto \
+        libcrypto_static \
+	libcryptfslollipop \
+	libdng_sdk \
+	libF77blas \
+	libFFTEm \
+	libFraunhoferAAC \
+	libjni_filtershow \
+	libjni_filtershow_filters \
+	libjpeg_static \
+	libLLVMCodeGen \
+	libLLVMSupport \
+	libmedia_jni \
+	libmpeg2dec \
+	libbnnmlowp \
+	libopus \
+	libpdfiumfxge \
+	libpdfiumjpeg \
+	librsjni \
+	libRSCpuRef \
+	libscrypttwrp_static \
+	libskia_static \
+	libsonic \
+	libstagefright% \
+	libvpx \
+	libwebp-decode \
+	libwebp-encode \
+	libwebrtc% \
+	libyuv_static
+
+DISABLE_POLLY_arm64 := \
+	$(DISABLE_POLLY_arm) \
+	libaudioutils \
+	libscrypt_static \
+	libsvoxpico
+
+# Set DISABLE_POLLY based on arch
+LOCAL_DISABLE_POLLY := \
+  $(DISABLE_POLLY_$(TARGET_ARCH)) \
+  $(DISABLE_POLLY_O3)
+
+# We just don't want these flags
+my_cflags := $(filter-out -O3 -O2 -Os -O1 -O0 -Og -Oz -Wall -Werror -g -Wextra -Weverything,$(my_cflags))
+my_cppflags := $(filter-out -O3 -O2 -Os -O1 -O0 -Og -Oz -Wall -Werror -g -Wextra -Weverything,$(my_cppflags))
+my_conlyflags := $(filter-out -O3 -O2 -Os -O1 -O0 -Og -Oz -Wall -Werror -g -Wextra -Weverything,$(my_conlyflags))
+
+ifneq (1,$(words $(filter $(DISABLE_POLLY_O3),$(LOCAL_MODULE))))
+  my_cflags += -O3
+else
+  my_cflags += -O2
+endif
+
+ifeq ($(my_clang), true)
+  # Do not enable POLLY on libraries
+  ifndef LOCAL_IS_HOST_MODULE
+    # Enable POLLY if not blacklisted
+    ifneq (1,$(words $(filter $(LOCAL_DISABLE_POLLY),$(LOCAL_MODULE))))
+      # Enable POLLY only on clang
+      ifneq ($(LOCAL_CLANG),false)
+        my_cflags += $(POLLY) -Qunused-arguments -fuse-ld=gold
+        my_ldflags += -fuse-ld=gold
+      endif
+    endif
+  endif
+endif
+
+ifeq ($(LOCAL_CLANG),false)
+  my_cflags += -Wno-unknown-warning
+endif
+
+ifeq ($(STRICT_ALIASING),true)
+  # Remove the no-strict-aliasing flags
+  my_cflags := $(filter-out -fno-strict-aliasing,$(my_cflags))
+  ifneq (1,$(words $(filter $(LOCAL_DISABLE_STRICT),$(LOCAL_MODULE))))
+    ifneq ($(LOCAL_CLANG),false)
+      my_cflags += $(STRICT_ALIASING_FLAGS) $(STRICT_GLANG_LEVEL)
+    else
+      my_cflags += $(STRICT_ALIASING_FLAGS) $(STRICT_GCC_LEVEL)
+    endif
+  endif
+endif
+
+ifeq ($(GRAPHITE_OPTS),true)
+  # Enable graphite only on GCC
+  ifneq ($(LOCAL_CLANG),false)
+    my_cflags += $(GRAPHITE_FLAGS)
+  endif
+endif
