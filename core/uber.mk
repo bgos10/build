@@ -103,6 +103,7 @@ DISABLE_POLLY_arm :=  \
 	libmpeg2dec \
 	libbnnmlowp \
 	libopus \
+	libpdfiumfpdfapi \
 	libpdfiumfxge \
 	libpdfiumjpeg \
 	librsjni \
