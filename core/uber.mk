@@ -35,7 +35,7 @@ STRICT_CLANG_LEVEL := \
 ############
 LOCAL_DISABLE_GRAPHITE := \
 	libfec_rs \
-	libfec_rs_host \
+        libfec_rs_host \
 
 GRAPHITE_FLAGS := \
 	-fgraphite \
@@ -53,47 +53,42 @@ GRAPHITE_FLAGS := \
 
 # Polly flags for use with Clang
 POLLY := -mllvm -polly \
-	 -mllvm -polly-parallel \
-	 -mllvm -polly-vectorizer=stripmine
-
-ifeq ($(STRICT_ALIASING),true)
-  ifneq (1,$(words $(filter $(LOCAL_DISABLE_STRICT),$(LOCAL_MODULE))))
-    POLLY += -mllvm -polly-ignore-aliasing
-  endif
-endif
+	 -mllvm -polly-parallel -lgomp \
+	 -mllvm -polly-vectorizer=polly \
+	 -mllvm -polly-opt-fusion=max \
+	 -mllvm -polly-opt-maximize-bands=yes \
+	 -mllvm -polly-run-inliner
 
 # Those are mostly Bluetooth modules
 DISABLE_POLLY_O3 := \
 	audio.a2dp.default \
 	bdAddrLoader \
 	bdt \
-	bdtest \
+        bdtest \
 	bluetooth.mapsapi \
-	bluetooth.default \
-	bluetooth.mapsapi \
+        bluetooth.default \
+        bluetooth.mapsapi \
 	libart% \
-	libbluetooth_jni \
-	libbt% \
-	libosi \
-	ositests \
+        libbluetooth_jni \
+        libbt% \
+        libosi \
+        ositests \
 	net_bdtool \
-	net_hci \
+        net_hci \
 	net_test_btcore \
 	net_test_device \
-	net_test_osi \
-	libxml2
+        net_test_osi \
+        libxml2
 
 # Disable modules that dont work with Polly. Split up by arch.
 DISABLE_POLLY_arm := \
 	libandroid \
 	libFraunhoferAAC \
 	libjpeg_static \
-	libLLVM% \
 	libopus \
 	libpdfium% \
 	libskia_static \
-	libstagefright% \
-	recovery
+	libstagefright%
 
 DISABLE_POLLY_arm64 := \
 	$(DISABLE_POLLY_arm) \
@@ -109,17 +104,15 @@ LOCAL_DISABLE_POLLY := \
   $(DISABLE_POLLY_$(TARGET_ARCH)) \
   $(DISABLE_POLLY_O3)
 
-# Disable polly if clang is disabled.
+# Set POLLY based on DISABLE_POLLY
 ifeq ($(LOCAL_CLANG),false)
   POLLY :=
 endif
 
-# Set POLLY based on DISABLE_POLLY
 ifeq (1,$(words $(filter $(LOCAL_DISABLE_POLLY),$(LOCAL_MODULE))))
   POLLY :=
 endif
 
-POLLY :=
 
 my_cflags := $(filter-out -Wall -Werror -g -O3 -O2 -Os -O1 -O0 -Og -Oz -Wextra -Weverything,$(my_cflags))
 
