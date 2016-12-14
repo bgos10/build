@@ -1,4 +1,12 @@
 
+# Show ROM & Kernel TCs
+ifdef TARGET_GCC_VERSION_ARM
+KERNEL_TOOLCHAIN_USED=$(TARGET_GCC_VERSION_ARM)
+else
+KERNEL_TOOLCHAIN_USED=$(TARGET_GCC_VERSION)
+endif
+ROM_TOOLCHAIN_USED=$(TARGET_GCC_VERSION_EXP)
+
 # List of variables we want to print in the build banner.
 print_build_config_vars := \
   PLATFORM_VERSION_CODENAME \
@@ -7,13 +15,14 @@ print_build_config_vars := \
   TARGET_PRODUCT \
   TARGET_BUILD_VARIANT \
   TARGET_BUILD_TYPE \
-  TARGET_BUILD_APPS \
   TARGET_ARCH \
   TARGET_ARCH_VARIANT \
   TARGET_CPU_VARIANT \
   TARGET_2ND_ARCH \
   TARGET_2ND_ARCH_VARIANT \
   TARGET_2ND_CPU_VARIANT \
+  ROM_TOOLCHAIN_USED \
+  KERNEL_TOOLCHAIN_USED \
   HOST_ARCH \
   HOST_2ND_ARCH \
   HOST_OS \
@@ -24,14 +33,6 @@ print_build_config_vars := \
   HOST_BUILD_TYPE \
   BUILD_ID \
   OUT_DIR
-
-ifneq (,$(filter true, $(CYNGN_TARGET) $(EXTERNAL_CLEAN_TARGET)))
-ifeq ($(CYNGN_TARGET),true)
-print_build_config_vars += \
-  CYNGN_TARGET \
-  CYNGN_FEATURES
-endif
-endif
 
 ifeq ($(TARGET_BUILD_PDK),true)
 print_build_config_vars += \
