@@ -578,7 +578,7 @@ function brunch()
 {
     breakfast $*
     if [ $? -eq 0 ]; then
-        mka bacon
+        mka orion
     else
         echo "No such item in brunch menu. Try 'breakfast'"
         return 1
@@ -1857,7 +1857,7 @@ function cmka() {
     if [ ! -z "$1" ]; then
         for i in "$@"; do
             case $i in
-                bacon|otapackage|systemimage)
+                orion|otapackage|systemimage)
                     mka installclean
                     mka $i
                     ;;
