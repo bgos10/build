@@ -27,9 +27,6 @@ print_build_config_vars := \
   HOST_2ND_ARCH \
   HOST_OS \
   HOST_OS_EXTRA \
-  HOST_CROSS_OS \
-  HOST_CROSS_ARCH \
-  HOST_CROSS_2ND_ARCH \
   HOST_BUILD_TYPE \
   BUILD_ID \
   OUT_DIR
