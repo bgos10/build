@@ -114,6 +114,17 @@ Usage:  ota_from_target_files [flags] input_target_files output_ota_package
       builds for an incremental package. This option is only meaningful when
       -i is specified.
 
+  --backup <boolean>
+      Enable or disable the execution of backuptool.sh.
+      Disabled by default.
+
+  --override_device <device>
+      Override device-specific asserts. Can be a comma-separated list.
+
+  --override_prop <boolean>
+      Override build.prop items with custom vendor init.
+      Enabled when TARGET_UNIFIED_DEVICE is defined in BoardConfig
+
   --payload_signer <signer>
       Specify the signer when signing the payload and metadata for A/B OTAs.
       By default (i.e. without this flag), it calls 'openssl pkeyutl' to sign
@@ -174,6 +185,9 @@ OPTIONS.cache_size = None
 OPTIONS.stash_threshold = 0.8
 OPTIONS.gen_verify = False
 OPTIONS.log_diff = None
+OPTIONS.backuptool = False
+OPTIONS.override_device = 'auto'
+OPTIONS.override_prop = False
 OPTIONS.payload_signer = None
 OPTIONS.payload_signer_args = []
 
@@ -1404,7 +1418,7 @@ def WriteABOTAPackageWithBrilloScript(target_file, output_file,
       care_map_data = target_zip.read(care_map_path)
       common.ZipWriteStr(output_zip, "care_map.txt", care_map_data)
     else:
-      print "Warning: cannot find care map file in target_file package"
+      print("Warning: cannot find care map file in target_file package")
     common.ZipClose(target_zip)
 
   # Sign the whole package to comply with the Android OTA package format.
@@ -2042,6 +2056,12 @@ def main(argv):
       OPTIONS.gen_verify = True
     elif o == ("--log_diff",):
       OPTIONS.log_diff = a
+    elif o in ("--backup",):
+      OPTIONS.backuptool = bool(a.lower() == 'true')
+    elif o in ("--override_device",):
+      OPTIONS.override_device = a
+    elif o in ("--override_prop",):
+      OPTIONS.override_prop = bool(a.lower() == 'true')
     elif o == "--payload_signer":
       OPTIONS.payload_signer = a
     elif o == "--payload_signer_args":
@@ -2075,6 +2095,9 @@ def main(argv):
                                  "stash_threshold=",
                                  "gen_verify",
                                  "log_diff=",
+                                 "backup=",
+                                 "override_device=",
+                                 "override_prop=",
                                  "payload_signer=",
                                  "payload_signer_args=",
                              ], extra_option_handler=option_handler)

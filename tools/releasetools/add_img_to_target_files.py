@@ -68,7 +68,7 @@ def AddSystem(output_zip, prefix="IMAGES/", recovery_img=None, boot_img=None):
 
   prebuilt_path = os.path.join(OPTIONS.input_tmp, prefix, "system.img")
   if os.path.exists(prebuilt_path):
-    print "system.img already exists in %s, no need to rebuild..." % (prefix,)
+    print("system.img already exists in %s, no need to rebuild..." % prefix)
     return prebuilt_path
 
   def output_sink(fn, data):
@@ -101,7 +101,7 @@ def AddSystemOther(output_zip, prefix="IMAGES/"):
 
   prebuilt_path = os.path.join(OPTIONS.input_tmp, prefix, "system_other.img")
   if os.path.exists(prebuilt_path):
-    print "system_other.img already exists in %s, no need to rebuild..." % (prefix,)
+    print("system_other.img already exists in %s, no need to rebuild..." % prefix)
     return
 
   imgname = BuildSystemOther(OPTIONS.input_tmp, OPTIONS.info_dict)
@@ -119,7 +119,7 @@ def AddVendor(output_zip, prefix="IMAGES/"):
 
   prebuilt_path = os.path.join(OPTIONS.input_tmp, prefix, "vendor.img")
   if os.path.exists(prebuilt_path):
-    print "vendor.img already exists in %s, no need to rebuild..." % (prefix,)
+    print("vendor.img already exists in %s, no need to rebuild..." % prefix)
     return prebuilt_path
 
   block_list = common.MakeTempFile(prefix="vendor-blocklist-", suffix=".map")
@@ -375,7 +375,14 @@ def AddImagesToTargetFiles(filename):
   except KeyError:
     has_vendor = False
 
+  try:
+    input_zip.getinfo("OEM/")
+    has_oem = True
+  except KeyError:
+    has_oem = False
+
   has_system_other = "SYSTEM_OTHER/" in input_zip.namelist()
+
 
   OPTIONS.info_dict = common.LoadInfoDict(input_zip, OPTIONS.input_tmp)
 
